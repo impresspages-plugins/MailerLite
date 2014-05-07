@@ -1,0 +1,42 @@
+{
+    "title": "MailerLite",
+    "version": "1.00",
+    "name": "MailerLite",
+    "description": "This plugin adds a widget for subscribing to MailerLite lists.",
+    "author": "ImpressPages",
+    "options": [
+        {
+            "label": "MailerLite API key",
+            "name": "apiKey",
+            "type": "text",
+            "default": ""
+        },
+        {
+            "label": "MailerLite group ID",
+            "name": "listId",
+            "type": "text",
+            "default": ""
+        },
+        {
+            "label": "E-mail input field label:",
+            "name": "emailFormLabel",
+            "type": "text",
+            "default": "E-mail:"
+        },
+        {
+            "label": "Subscribe button label:",
+            "name": "subscribeFormLabel",
+            "type": "text",
+            "default": "Subscribe"
+        },
+        {
+            "label": "'Thank you' message:",
+            "name": "thankYouMessage",
+            "type": "text",
+            "default": "Your e-mail was registered. Thank you for subscribing."
+        }
+
+
+
+    ]
+}
