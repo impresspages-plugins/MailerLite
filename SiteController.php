@@ -7,14 +7,17 @@ class SiteController extends \Ip\Controller
     {
         $postData = ipRequest()->getPost();
 
-        $form = \Plugin\MailerLite\Widget\MailerLite\Model::showForm();
+        $listId = $postData['listId'];
+
+        $form = \Plugin\MailerLite\Widget\MailerLite\Model::showForm($listId);
 
         $errors = $form->validate($postData);
 
         if (!$errors){
 
             $email = $postData['email'];
-            \Plugin\MailerLite\Widget\MailerLite\Model::addSubscriber($email);
+            $listId = $postData['listId'];
+            \Plugin\MailerLite\Widget\MailerLite\Model::addSubscriber($email, $listId);
 
             $thankYouMessage = ipGetOption('MailerLite.thankYouMessage');
 
@@ -24,14 +27,12 @@ class SiteController extends \Ip\Controller
             return new \Ip\Response\Json(array(
                 'replaceHtml' => $answer
             ));
-
         }else{
             return new \Ip\Response\Json(array(
                 'status' => 'error',
                 'errors' => $errors
             ));
         }
-
 
     }
 
