@@ -12,12 +12,6 @@
             "default": ""
         },
         {
-            "label": "MailerLite group ID",
-            "name": "listId",
-            "type": "text",
-            "default": ""
-        },
-        {
             "label": "E-mail input field label:",
             "name": "emailFormLabel",
             "type": "text",
@@ -35,8 +29,6 @@
             "type": "text",
             "default": "Your e-mail was registered. Thank you for subscribing."
         }
-
-
 
     ]
 }

@@ -79,10 +79,6 @@ class Model{
         return $key;
     }
 
-    public static function getList(){
-        $listId = ipGetOption('MailerLite.listId');
-        return $listId;
-    }
     public static function getAllLists()
     {
         require_once(ipFile('Plugin/MailerLite/lib/ML_Lists.php'));
@@ -94,7 +90,7 @@ class Model{
         if (!empty($lists->Results)){
             foreach ($lists->Results as $list){
                 if (isset($list->id)&&(isset($list->name))){
-                    $retval[$list->id]= $list->name;
+                    $retval[]= array($list->id, $list->name);
                 }
             }
         }

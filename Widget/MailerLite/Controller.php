@@ -14,8 +14,9 @@ class Controller extends \Ip\WidgetController
             $formHtml = $form->render();
             $data['formHtml'] = $formHtml;
 
+        }else{
+            $data['formHtml'] = '';
         }
-
 
         return parent::generateHtml($revisionId, $widgetId, $data, $skin);
     }
