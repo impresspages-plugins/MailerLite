@@ -1,4 +1,4 @@
-<div class="ip">
+<div class="ip ipWidget-MailerLite">
     <div id="ipsWidgetMailerLitePopup" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -8,7 +8,14 @@
                 </div>
 
                 <div class="modal-body">
-                    <?php echo $form->render(); ?>
+                    <?php
+                    echo $commercial->render();
+                    ?>
+                    <div class="_form">
+                    <?php
+                    echo $form->render();
+                    ?>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('Cancel', 'ipAdmin') ?></button>

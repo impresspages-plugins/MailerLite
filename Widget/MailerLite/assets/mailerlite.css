@@ -1,0 +1,11 @@
+.ipWidget-MailerLite ._commercial{
+    padding: 20px;
+}
+
+.ipWidget-MailerLite ._discount{
+   font-weight: bold;
+}
+
+.ipWidget-MailerLite ._form{
+    padding-top: 20px;
+}
