@@ -8,13 +8,13 @@ class Controller extends \Ip\WidgetController
 {
     public function generateHtml($revisionId, $widgetId, $data, $skin)
     {
-        if (isset( $data['selectedGroup'])){
+        if (isset($data['selectedGroup'])) {
             $listId = $data['selectedGroup'];
             $form = Model::showForm($listId);
             $formHtml = $form->render();
             $data['formHtml'] = $formHtml;
 
-        }else{
+        } else {
             $data['formHtml'] = '';
         }
 
@@ -29,10 +29,10 @@ class Controller extends \Ip\WidgetController
             'form' => $form
         );
 
-        if (time() < strtotime('2015-06-01')){
+        if (time() < strtotime('2015-06-01')) {
             $variables['commercial'] = ipView('view/commercial.php');
-        }else{
-            $variables['commercial']  = '';
+        } else {
+            $variables['commercial'] = '';
         }
 
         return ipView('snippet/popup.php', $variables)->render();

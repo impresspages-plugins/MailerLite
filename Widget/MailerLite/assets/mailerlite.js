@@ -19,15 +19,13 @@ var IpWidget_MailerLite = function () {
         this.widgetObject = widgetObject;
         this.data = data;
         var context = this; // set this so $.proxy would work below
-
         var $widgetOverlay = $('<div></div>')
             .css('position', 'absolute')
             .css('z-index', 5)
             .width(this.widgetObject.width())
-            .height(this.widgetObject.height());
+            .height(Math.max(this.widgetObject.height(), 22));
         this.widgetObject.prepend($widgetOverlay);
         $widgetOverlay.on('click', $.proxy(openPopup, context));
-
     };
 
     this.onAdd = function () {

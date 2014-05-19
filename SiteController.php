@@ -19,9 +19,7 @@ class SiteController extends \Ip\Controller
             $listId = $postData['listId'];
             \Plugin\MailerLite\Widget\MailerLite\Model::addSubscriber($email, $listId);
 
-            $thankYouMessage = ipGetOption('MailerLite.thankYouMessage');
-
-            $data = array('email'=> $email, 'thankYouMessage'=>$thankYouMessage);
+            $data = array('email'=> $email);
             $answer = ipView('view/thankyou.php', $data)->render();
 
             return new \Ip\Response\Json(array(

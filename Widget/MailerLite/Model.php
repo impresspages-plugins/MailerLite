@@ -21,7 +21,7 @@ class Model{
         $field = new \Ip\Form\Field\Email(
             array(
                 'name' => 'email', // HTML "name" attribute
-                'label' => ipGetOption('MailerLite.emailFormLabel'), // Field label that will be displayed next to input field
+                'label' => __('E-mail', 'MailerLite', false),
             ));
         $field->addValidator('Required');
         $form->addField($field);
@@ -29,7 +29,7 @@ class Model{
         $field = new \Ip\Form\Field\Submit(
             array(
                 'name' => 'submit', // HTML "name" attribute
-                'value' => ipGetOption('MailerLite.subscribeFormLabel'), // Field label that will be displayed next to input field
+                'value' => __('Subscribe', 'MailerLite', false),
             ));
         $form->addField($field);
 
