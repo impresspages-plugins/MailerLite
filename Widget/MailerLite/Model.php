@@ -7,13 +7,16 @@
  */
 namespace Plugin\MailerLite\Widget\MailerLite;
 
-class Model{
+class Model
+{
 
-    public function __construct(){
+    public function __construct()
+    {
         require_once(ipFile('Plugin/MailerLite/lib/ML_Subscribers.php'));
     }
 
-    public static function showForm($listId){
+    public static function showForm($listId)
+    {
         // Create a form object
         $form = new \Ip\Form();
 
@@ -32,7 +35,6 @@ class Model{
                 'value' => __('Subscribe', 'MailerLite', false),
             ));
         $form->addField($field);
-
 
 
         $field = new \Ip\Form\Field\Hidden(
@@ -57,11 +59,11 @@ class Model{
     {
         $form = new \Ip\Form();
 
-        if ($values = self::getAllLists()){
+        if ($values = self::getAllLists()) {
 
             $selectFields = array(
                 'name' => 'selectedGroup',
-                'label' => __('Select MailerLite group:','MailerLite'),
+                'label' => __('Select MailerLite group:', 'MailerLite'),
                 'values' => $values,
                 'value' => 1
             );
@@ -71,11 +73,12 @@ class Model{
             $form->addField($field);
         }
 
-        return  $form;
+        return $form;
 
     }
 
-    public static function getApiKey(){
+    public static function getApiKey()
+    {
 
         $key = ipGetOption('MailerLite.apiKey');
         return $key;
@@ -85,37 +88,38 @@ class Model{
     {
         require_once(ipFile('Plugin/MailerLite/lib/ML_Lists.php'));
 
-        if ($ML_Lists = new \ML_Lists( self::getApiKey() )){
-            $lists = json_decode($ML_Lists->getAll( ));
+        if ($ML_Lists = new \ML_Lists(self::getApiKey())) {
+            $lists = json_decode($ML_Lists->getAll());
 
             $retval = false;
 
-            if (!empty($lists->Results)){
-                foreach ($lists->Results as $list){
-                    if (isset($list->id)&&(isset($list->name))){
-                        $retval[]= array($list->id, $list->name);
+            if (!empty($lists->Results)) {
+                foreach ($lists->Results as $list) {
+                    if (isset($list->id) && (isset($list->name))) {
+                        $retval[] = array($list->id, $list->name);
                     }
                 }
             }
 
             return $retval;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static function addSubscriber($email, $listId){
+    public static function addSubscriber($email, $listId)
+    {
 
         require_once(ipFile('Plugin/MailerLite/lib/ML_Subscribers.php'));
         $apiKey = self::getApiKey();
-        if ($ML_Subscribers = new \ML_Subscribers( $apiKey )){
+        if ($ML_Subscribers = new \ML_Subscribers($apiKey)) {
 
             $subscriber = array(
                 'email' => $email,
             );
 
 
-            $ML_Subscribers->setId($listId )->add( $subscriber, 1 /* set resubscribe to true*/ );
+            $ML_Subscribers->setId($listId)->add($subscriber, 1 /* set resubscribe to true*/);
         }
     }
 }

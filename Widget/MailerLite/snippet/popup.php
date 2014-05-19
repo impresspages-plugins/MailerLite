@@ -9,7 +9,7 @@
 
                 <div class="modal-body">
                     <?php
-                    echo $commercial->render();
+                    echo $note->render();
                     ?>
                     <div class="_form">
                     <?php

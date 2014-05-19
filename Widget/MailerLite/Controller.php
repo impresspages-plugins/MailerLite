@@ -29,10 +29,18 @@ class Controller extends \Ip\WidgetController
             'form' => $form
         );
 
-        if (time() < strtotime('2015-06-01')) {
-            $variables['commercial'] = ipView('view/commercial.php');
+        $lists = Model::getAllLists();
+        $variables ['lists'] = $lists;
+
+        if ($lists === false) {
+            $noapikeyVars = array(
+                'pluginConfigUrl' => ipConfig()->baseUrl() . '?aa=Plugins.index#/hash=&plugin=MailerLite'
+            );
+            $variables['note'] = ipView('view/noapikey.php', $noapikeyVars);
+        } elseif (time() < strtotime('2015-06-01')) {
+            $variables['note'] = ipView('view/voucher.php');
         } else {
-            $variables['commercial'] = '';
+            $variables['note'] = '';
         }
 
         return ipView('snippet/popup.php', $variables)->render();
