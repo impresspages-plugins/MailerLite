@@ -9,7 +9,9 @@
 
                 <div class="modal-body">
                     <?php
-                    echo $note->render();
+                    if ($note) {
+                        echo $note->render();
+                    }
                     ?>
                     <div class="_form">
                     <?php
